@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:text="EXERCÍCIOS PDM"
+        android:text="Exercises PDM"
         android:textAlignment="center"
         android:textSize="30sp" />
 
@@ -21,7 +21,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:text="Persistência de Dados"
+        android:text="Persistent data"
         android:textAlignment="center" />
 
     <TextView
@@ -31,7 +31,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginTop="20dp"
         android:layout_marginRight="10dp"
-        android:text="Exercícios da aula 10" />
+        android:text="from class 10" />
 
     <Button
         android:id="@+id/btnEx10"
@@ -39,7 +39,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
-        android:text="ir" />
+        android:text="go" />
 
     <TextView
         android:id="@+id/textView4"
@@ -48,7 +48,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
         android:layout_marginRight="10dp"
-        android:text="Exercícios da aula 11" />
+        android:text="from class 11" />
 
     <Button
         android:id="@+id/btnEx11"
@@ -56,5 +56,5 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
-        android:text="ir" />
+        android:text="go" />
 </LinearLayout>
