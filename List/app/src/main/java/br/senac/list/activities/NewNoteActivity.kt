@@ -10,6 +10,7 @@ import br.senac.list.R
 import br.senac.list.databinding.ActivityNewNoteBinding
 import br.senac.list.model.Note
 import com.jaredrummler.android.colorpicker.ColorPickerDialog
+import com.jaredrummler.android.colorpicker.ColorPickerDialogListener
 
 class NewNoteActivity : AppCompatActivity() {
     lateinit var binding: ActivityNewNoteBinding
@@ -42,4 +43,5 @@ class NewNoteActivity : AppCompatActivity() {
         val db = Room.databaseBuilder(this, AppDataBase::class.java, "db").build()
         db.noteDao().insert(note)
     }
+
 }
