@@ -9,11 +9,26 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.List">
-
-        <activity android:name=".activities.ListNotesActivity"
-            android:label="Notes"
+        <activity
+            android:name=".activities.EditNoteActivity"
+            android:label="Edit Note"
             android:parentActivityName=".activities.ListNotesActivity"/>
-
+        <activity
+            android:name=".activities.UserActivity"
+            android:label="User"
+            android:parentActivityName=".activities.ListNotesActivity" />
+        <activity
+            android:name=".activities.SettingsActivity"
+            android:label="Settings"
+            android:parentActivityName=".activities.ListNotesActivity" />
+        <activity
+            android:name=".activities.NewNoteActivity"
+            android:label="Create a new note"
+            android:parentActivityName=".activities.ListNotesActivity" />
+        <activity
+            android:name=".activities.ListNotesActivity"
+            android:label="Notes"
+            android:parentActivityName=".activities.MainActivity" />
         <activity android:name=".activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,7 +36,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
     </application>
 
 </manifest>

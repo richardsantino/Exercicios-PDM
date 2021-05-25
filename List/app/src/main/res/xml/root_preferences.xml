@@ -1,0 +1,25 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory app:title="Notes">
+
+        <EditTextPreference
+            app:key="titleSize"
+            android:summary="Choose a size"
+            app:title="Title size"/>
+
+        <EditTextPreference
+            app:key="descSize"
+            android:summary="Choose a size"
+            app:title="Description size"/>
+
+        <com.jaredrummler.android.colorpicker.ColorPreferenceCompat
+            android:defaultValue="@color/gray"
+            android:key="textColor"
+            android:summary="Select a color"
+            android:title="Text color">
+        </com.jaredrummler.android.colorpicker.ColorPreferenceCompat>
+
+    </PreferenceCategory>
+
+</PreferenceScreen>
