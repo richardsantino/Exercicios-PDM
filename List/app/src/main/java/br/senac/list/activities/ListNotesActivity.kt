@@ -90,22 +90,10 @@ class ListNotesActivity : AppCompatActivity() {
                 }.start()
                 recreate()
             }
-    /*
-            var id : Int? = null,
-            var title: String,
-            var desc: String,
-            var user: String,
-            var noteColor: String
 
-     */
-
-            // AQUI!!!!!!
             cardBinding.btnEdit.setOnClickListener {
                 val i = Intent(this, EditNoteActivity::class.java)
-                i.putExtra("EditId", note.id)
-                i.putExtra("EditTitle", note.title)
-                i.putExtra("EditDesc", note.desc)
-                i.putExtra("EditNoteColor", note.noteColor)
+                i.putExtra("NoteId", note.id)
                 startActivity(i)
             }
 

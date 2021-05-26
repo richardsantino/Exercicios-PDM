@@ -12,17 +12,19 @@ import br.senac.list.model.Note
 import com.jaredrummler.android.colorpicker.ColorPickerDialog
 import com.jaredrummler.android.colorpicker.ColorPickerDialogListener
 
-class NewNoteActivity : AppCompatActivity()  {
+class NewNoteActivity : AppCompatActivity(), ColorPickerDialogListener {
     lateinit var binding: ActivityNewNoteBinding
+    lateinit var  colorChoosen: String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityNewNoteBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        var color = "#FFFFFF"
+        colorChoosen = "#FFFFFF"
 
         binding.btnColor.setOnClickListener {
-            color = ColorPickerDialog.newBuilder().setColor(Color.WHITE).show(this).toString()
+            val dialog = ColorPickerDialog.newBuilder().setColor(Color.WHITE).create()
+            dialog.show(supportFragmentManager, "COLOR_PICKER_EDT")
         }
 
         binding.btnAdd.setOnClickListener {
@@ -31,7 +33,7 @@ class NewNoteActivity : AppCompatActivity()  {
 
 
             val note = Note(title = binding.etTitle.text.toString(), desc = binding.etDesc.text.toString(),
-                user = user, noteColor = color)
+                user = user, noteColor = colorChoosen)
             Thread{
                 insertNote(note)
                 finish()
@@ -43,5 +45,16 @@ class NewNoteActivity : AppCompatActivity()  {
         val db = Room.databaseBuilder(this, AppDataBase::class.java, "db").build()
         db.noteDao().insert(note)
     }
+
+    override fun onDialogDismissed(dialogId: Int) {
+        binding.root.setBackgroundColor(Color.parseColor(colorChoosen))
+    }
+
+    override fun onColorSelected(dialogId: Int, color: Int) {
+        val colorPicked = Integer.toHexString(color)
+        colorChoosen = "#$colorPicked"
+
+    }
+
 
 }
