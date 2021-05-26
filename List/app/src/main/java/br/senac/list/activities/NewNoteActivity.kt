@@ -12,7 +12,7 @@ import br.senac.list.model.Note
 import com.jaredrummler.android.colorpicker.ColorPickerDialog
 import com.jaredrummler.android.colorpicker.ColorPickerDialogListener
 
-class NewNoteActivity : AppCompatActivity() {
+class NewNoteActivity : AppCompatActivity()  {
     lateinit var binding: ActivityNewNoteBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

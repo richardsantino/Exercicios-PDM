@@ -2,6 +2,7 @@ package br.senac.list.DB
 
 import androidx.room.*
 import br.senac.list.model.Note
+import java.util.*
 
 @Dao
 interface noteDao {
@@ -16,4 +17,7 @@ interface noteDao {
 
     @Query(value = "select * from Note")
     fun listAll(): List<Note>
+
+    @Query(value = "select * from Note where id = :id")
+    fun listNote(id: Int): Note
 }
