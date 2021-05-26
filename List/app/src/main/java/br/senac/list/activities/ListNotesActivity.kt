@@ -5,6 +5,7 @@ import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.TypedValue
+import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AlertDialog
@@ -92,7 +93,7 @@ class ListNotesActivity : AppCompatActivity() {
             }
 
             cardBinding.btnEdit.setOnClickListener {
-
+                
             }
 
             binding.container.addView(cardBinding.root)
