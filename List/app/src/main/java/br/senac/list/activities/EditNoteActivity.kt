@@ -56,14 +56,12 @@ class EditNoteActivity : AppCompatActivity(), ColorPickerDialogListener {
         binding.root.setBackgroundColor(Color.parseColor(note.noteColor))
     }
 
-
     fun updateNote(note: Note) {
         val db = Room.databaseBuilder(this, AppDataBase::class.java, "db").build()
         db.noteDao().update(note)
     }
 
     override fun onDialogDismissed(dialogId: Int) {
-        binding.root.setBackgroundColor(Color.parseColor(colorChoosen))
     }
 
     override fun onColorSelected(dialogId: Int, color: Int) {

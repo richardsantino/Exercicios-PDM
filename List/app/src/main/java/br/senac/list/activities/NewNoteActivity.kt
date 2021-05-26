@@ -14,7 +14,7 @@ import com.jaredrummler.android.colorpicker.ColorPickerDialogListener
 
 class NewNoteActivity : AppCompatActivity(), ColorPickerDialogListener {
     lateinit var binding: ActivityNewNoteBinding
-    lateinit var  colorChoosen: String
+    lateinit var colorChoosen: String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityNewNoteBinding.inflate(layoutInflater)
@@ -47,7 +47,6 @@ class NewNoteActivity : AppCompatActivity(), ColorPickerDialogListener {
     }
 
     override fun onDialogDismissed(dialogId: Int) {
-        binding.root.setBackgroundColor(Color.parseColor(colorChoosen))
     }
 
     override fun onColorSelected(dialogId: Int, color: Int) {
