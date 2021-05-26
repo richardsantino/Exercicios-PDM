@@ -7,7 +7,6 @@ import android.os.Bundle
 import androidx.room.Room
 import br.senac.list.DB.AppDataBase
 import br.senac.list.R
-import br.senac.list.databinding.ActivityEditNoteBinding
 import br.senac.list.databinding.ActivityNewNoteBinding
 import br.senac.list.model.Note
 import com.jaredrummler.android.colorpicker.ColorPickerDialog
@@ -53,7 +52,6 @@ class EditNoteActivity : AppCompatActivity(), ColorPickerDialogListener {
     fun updateScreen(note: Note){
         binding.etTitle.setText(note.title)
         binding.etDesc.setText(note.desc)
-        binding.root.setBackgroundColor(Color.parseColor(note.noteColor))
     }
 
     fun updateNote(note: Note) {
