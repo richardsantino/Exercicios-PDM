@@ -7,20 +7,32 @@ import android.os.Bundle
 import androidx.room.Room
 import br.senac.list.DB.AppDataBase
 import br.senac.list.R
+import br.senac.list.databinding.ActivityEditNoteBinding
 import br.senac.list.databinding.ActivityNewNoteBinding
 import br.senac.list.model.Note
 import com.jaredrummler.android.colorpicker.ColorPickerDialog
 import com.jaredrummler.android.colorpicker.ColorPickerDialogListener
 
-class NewNoteActivity : AppCompatActivity(), ColorPickerDialogListener {
+class EditNoteActivity : AppCompatActivity(), ColorPickerDialogListener {
     lateinit var binding: ActivityNewNoteBinding
     lateinit var colorChoosen: String
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityNewNoteBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        colorChoosen = "#FFFFFF"
+        lateinit var note: Note
+        val noteId = intent.getIntExtra("NoteId", 1)
+
+        Thread{
+            val db = Room.databaseBuilder(this, AppDataBase::class.java, "db").build()
+            note = db.noteDao().listNote(noteId)
+            runOnUiThread {
+                updateScreen(note)
+            }
+        }.start()
+
 
         binding.btnColor.setOnClickListener {
             val dialog = ColorPickerDialog.newBuilder().setColor(Color.WHITE).create()
@@ -28,22 +40,25 @@ class NewNoteActivity : AppCompatActivity(), ColorPickerDialogListener {
         }
 
         binding.btnAdd.setOnClickListener {
-            val sharedPrefs = getSharedPreferences("Users", Context.MODE_PRIVATE)
-            val user = sharedPrefs.getString("username", "") as String
-
-
-            val note = Note(title = binding.etTitle.text.toString(), desc = binding.etDesc.text.toString(),
-                user = user, noteColor = colorChoosen)
+            note.title = binding.etTitle.text.toString()
+            note.desc = binding.etDesc.text.toString()
+            note.noteColor = colorChoosen
             Thread{
-                insertNote(note)
+                updateNote(note)
                 finish()
             }.start()
         }
     }
 
-    fun insertNote(note: Note){
+    fun updateScreen(note: Note){
+        binding.etTitle.setText(note.title)
+        binding.etDesc.setText(note.desc)
+        binding.root.setBackgroundColor(Color.parseColor(note.noteColor))
+    }
+
+    fun updateNote(note: Note) {
         val db = Room.databaseBuilder(this, AppDataBase::class.java, "db").build()
-        db.noteDao().insert(note)
+        db.noteDao().update(note)
     }
 
     override fun onDialogDismissed(dialogId: Int) {
@@ -54,6 +69,4 @@ class NewNoteActivity : AppCompatActivity(), ColorPickerDialogListener {
         colorChoosen = "#$colorPicked"
 
     }
-
-
 }

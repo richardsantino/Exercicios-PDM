@@ -9,10 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.List">
+        <activity android:name=".activities.CepSearchActivity"></activity>
         <activity
             android:name=".activities.EditNoteActivity"
             android:label="Edit Note"
-            android:parentActivityName=".activities.ListNotesActivity"/>
+            android:parentActivityName=".activities.ListNotesActivity" />
         <activity
             android:name=".activities.UserActivity"
             android:label="User"
@@ -37,5 +38,7 @@
             </intent-filter>
         </activity>
     </application>
+    
+    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

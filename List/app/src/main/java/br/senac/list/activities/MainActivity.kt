@@ -20,10 +20,10 @@ class MainActivity : AppCompatActivity() {
             startActivity(i)
         }
 
-        /*binding.btnEx11.setOnClickListener {
-            val i = Intent(this, )
+        binding.btnEx11.setOnClickListener {
+            val i = Intent(this, CepSearchActivity::class.java)
             startActivity(i)
-        }*/
+        }
 
     }
 }
